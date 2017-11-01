@@ -61,15 +61,11 @@ term    :   ID                      { $$ = $1;
     public void enterSymbol(Node id, Node value) {
         /* YOUR CODE */
         symbol_table.put(id.token, value.token);
-	
     }
 
     public boolean isDeclaredLocally(Node id) {
         /* YOUR CODE */
-	if (symbol_table.containsKey(id.token)){
-	return true;
-}
-        return false;
+    	return symbol_table.containsKey(id.token);
     }
 
     public void printSymbolTable() {
