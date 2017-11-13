@@ -8,8 +8,9 @@ comment */
 */
 PROGRAM example;
 INT a = 1;
+//next line should error: Duplicate variable
 INT a = 222;
-z = 77;
+INT z = 77;
 INT b = 2;
 INT c = 3;
 INT s1 = a + b + c

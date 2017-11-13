@@ -77,23 +77,32 @@ term    :   ID                      { $$ = $1;
     /***************************************
      ***** YOUR CODE HERE ******************
      ***************************************/
-    List<HashMap<String, String>> symbolTableStack = new ArrayList<HashMap<String, String>>();
-    
-    HashMap<String, String> curSymbolTable = new HashMap<String, String>();
-    
-    public void pushScope() {
-	//YOUR CODE HERE
-    }
+   List < HashMap < String, String >> symbolTableStack = new ArrayList < HashMap < String, String >> ();
 
-    public boolean canRetrieveSymbol(Node id) {
-	//YOUR CODE HERE
-	return false;
-    }
+   HashMap < String, String > curSymbolTable = new HashMap < String, String > ();
 
-    public void exitScope(){
-	//YOUR CODE HERE
-    }
+   public void pushScope() {
+       //YOUR CODE HERE
+       symbolTableStack.add(curSymbolTable);
+       HashMap < String, String > newTable = new HashMap < String, String > ();
+       curSymbolTable = newTable;
+   }
 
+   public boolean canRetrieveSymbol(Node id) {
+       //YOUR CODE HERE
+       for (int i = symbolTableStack.size() - 1; i >= 0; i--) {
+           if (symbolTableStack.get(i).containsKey(id)) {
+               return true;
+           }
+       }
+       return false;
+   }
+
+   public void exitScope() {
+       //YOUR CODE HERE
+       curSymbolTable = symbolTableStack.get(symbolTableStack.size() - 1);
+       symbolTableStack.remove(symbolTableStack.size() - 1);
+   }
     
     public void enterSymbol(Node id, Node value) {
         curSymbolTable.put(id.token, value.token);
@@ -107,7 +116,10 @@ term    :   ID                      { $$ = $1;
     }
 
     public void printSymbolTable() {
-	//YOUR CODE HERE
+    	//YOUR CODE HERE
+        System.out.println("Symbol table:");
+        //this method is called AFTER pushScope, so curSymbolTable will be empty.
+        System.out.println(symbolTableStack.get(symbolTableStack.size()-1));
     }
 
 
