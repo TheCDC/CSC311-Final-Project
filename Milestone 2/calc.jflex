@@ -6,6 +6,9 @@
 %column
 %byaccj
 
+ONELINE_COMMENT=\/\/.*
+MULTILINE_COMMENT=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
+
 %{
 	/* store a reference to the parser object */
 	private Parser yyparser;
@@ -30,14 +33,16 @@
 
 %%
 
+
 /********  YOUR CODE TO ALLOW COMMENTS ****************************/
 /** Comments can be in the form of /* */ or // until end of line **/
 /******************************************************************/
 
 //TODO: Your Regular Expression to allow multi-line comment
+{ONELINE_COMMENT}		{System.out.println("Oneline comment at " + getLine() + ":" + getColumn());}
 
 //TODO: Your Regular Expression to allow single-line comment
-
+{MULTILINE_COMMENT} 	{System.out.println("Multiline comment at " + getLine() + ":" + getColumn());}
 
 PROGRAM 				{ yyparser.yylval = new Node(yytext()); 
 					      return Parser.PROGRAM;}

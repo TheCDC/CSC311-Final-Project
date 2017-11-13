@@ -1,7 +1,11 @@
 /* comment */
 // also comment
-/* long
+/* lon
 comment */
+/*
+*********** This Comment ***********
+***** Contains **** Formatting *****
+*/
 PROGRAM example;
 INT a = 1;
 INT a = 222;
@@ -31,3 +35,4 @@ BEGIN
 	END
 END
 .
+/* y does end wid pereod */

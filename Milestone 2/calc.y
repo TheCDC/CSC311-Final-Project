@@ -77,7 +77,7 @@ term    :   ID                      { $$ = $1;
     /***************************************
      ***** YOUR CODE HERE ******************
      ***************************************/
-
+    List<HashMap<String, String>> symbolTableStack = new ArrayList<HashMap<String, String>>();
     
     HashMap<String, String> curSymbolTable = new HashMap<String, String>();
     
