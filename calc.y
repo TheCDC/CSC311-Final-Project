@@ -20,7 +20,7 @@ stmt_list   :   stmt                { $$ = $1; }
 stmt    :   ID ASSIGN expr        { $$ = makeNode($2.token, $1, $3); 
                                     if(isDeclaredLocally($1)) { 
                                         /* YOUR CODE */
-                    					yyerror($1 + " previously declared.");
+                    					yyerror("'" + $1 + "' previously declared.");
                                     } else { 
                                         /* YOUR CODE */
                                         enterSymbol($1,$3);
@@ -35,12 +35,8 @@ expr    :   expr PLUS term          { $$ = makeNode("+", $1, $3);  }
 
 term    :   ID                      { $$ = $1;
 					
-                                        /* YOUR CODE */ 
-                                        /* if (some condition) { 
-                                            ...
-                                        } */
                                         if (!isDeclaredLocally($1)){
-                                            yyerror($1 + " not declared.");
+                                            yyerror("'" + $1 + "' not declared.");
                                         }
 
                                     }
@@ -59,12 +55,10 @@ term    :   ID                      { $$ = $1;
     /* Parameters are Node types because all parse values are specified as
        a Node by using the -Jsemantic=Node flag (for the parser) in Makefile */
     public void enterSymbol(Node id, Node value) {
-        /* YOUR CODE */
         symbol_table.put(id.token, value.token);
     }
 
     public boolean isDeclaredLocally(Node id) {
-        /* YOUR CODE */
     	return symbol_table.containsKey(id.token);
     }
 
