@@ -1,0 +1,33 @@
+/* comment */
+// also comment
+/* long
+comment */
+PROGRAM example;
+INT a = 1;
+INT a = 222;
+z = 77;
+INT b = 2;
+INT c = 3;
+INT s1 = a + b + c
+BEGIN 
+	INT a2 = 1;
+	INT b2 = 2;
+	INT c2 = 3;
+	STRING s2 = a + b + c
+END
+BEGIN 
+	INT a3 = 1;
+	INT b3 = 2;
+	INT c3 = 3;
+	INT s3 = a3 + b3 + s1
+	BEGIN
+		INT x=a
+		BEGIN
+			INT y=x
+			BEGIN
+				FLOAT z=s3
+			END
+		END
+	END
+END
+.
