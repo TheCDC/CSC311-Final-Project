@@ -1,0 +1,38 @@
+/* comment */
+// also comment
+/* long
+comment */
+PROGRAM example;
+INT a = 1;
+STRING x = "a";
+INT c = 3;
+//error
+INT s1 = a + c - x
+BEGIN 
+	INT a2 = 1;
+	INT b2 = 2;
+	//error
+	FLOAT c2 = 3;
+	//error
+	STRING s2 = a + b2 + c2
+END
+BEGIN 
+	INT a3 = 1;
+	INT b3 = 2;
+	INT s3 = a + b3 + a3
+	BEGIN
+		INT x=a
+		BEGIN
+			INT y=x
+			BEGIN
+				//error
+				FLOAT z=s3
+				BEGIN
+					//error
+					STRING m3 = s1
+				END
+			END
+		END
+	END
+END
+.
