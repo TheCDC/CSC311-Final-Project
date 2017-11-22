@@ -9,7 +9,6 @@ comment */
 PROGRAM example;
 INT a = 1;
 //next line should error: Duplicate variable
-INT a = 222;
 INT z = 77;
 INT b = 2;
 INT c = 3;
@@ -17,7 +16,7 @@ INT s1 = a + b + c
 BEGIN 
 	INT a2 = 1;
 	INT b2 = 2;
-	INT c2 = 3;
+	INT c2 = xx;
 	STRING s2 = a + b + c
 END
 BEGIN 
@@ -31,9 +30,10 @@ BEGIN
 			INT y=x
 			BEGIN
 				FLOAT z=s3
+
 			END
 		END
 	END
 END
 .
-/* y does end wid pereod */
+

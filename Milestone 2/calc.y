@@ -59,13 +59,16 @@ expr    :   expr PLUS term          { $$ = makeNode("+", $1, $3); }
         |   ID                      { $$ = $1;
 
                                       /** YOUR CODE HERE **/
-
+                                      if (!canRetrieveSymbol($1)) { 
+                                            yyerror($1.token + " is not declared!");
+                                        }
                                     }
         ;
 
 term    :   ID                      { $$ = $1;
                                       
                                       /** YOUR CODE HERE **/ 
+
 
                                     }
         |   NUM                     { $$ = $1; }
@@ -90,6 +93,9 @@ term    :   ID                      { $$ = $1;
 
    public boolean canRetrieveSymbol(Node id) {
        //YOUR CODE HERE
+       if (curSymbolTable.containsKey(id)){
+           return true;
+       }
        for (int i = symbolTableStack.size() - 1; i >= 0; i--) {
            if (symbolTableStack.get(i).containsKey(id)) {
                return true;
