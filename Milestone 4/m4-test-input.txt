@@ -1,0 +1,6 @@
+PROGRAM example;
+FLOAT a = 1.1;
+FLOAT b = 2.2;
+FLOAT f = a + b;
+PRINT(f)
+.
