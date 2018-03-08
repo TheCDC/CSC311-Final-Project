@@ -60,7 +60,7 @@ stmt    :   type ID ASSIGN expr   {
                                             // $4.assembly = ".data\n" + $4.assembly.replace("P1", name);
                                             dataSection.add($4.assembly.replace("P1", name));
                                             // $4.assembly = $4.assembly + "\n.text\nlw " + getRegister(name) + ", " + $2.token;
-                                            textSection.add("\nlw " + getRegister(name) + ", " + $2.token);
+                                            textSection.add("lw " + getRegister(name) + ", " + $2.token);
                                         } else if (type.equals("FLOAT")) {
                                             int reg = getFloatRegister();
                                             setRegister($2.token,"$f" + reg );
@@ -89,7 +89,7 @@ stmt    :   type ID ASSIGN expr   {
                                             // setRegister(varName2, "$t"+getIntRegister());
                                             //find in hashmap, which register has the value of this variable name
                                             // replace $tY
-                                            $4.assembly = ".text\n" + $4.assembly.replace(varName2, getRegister(varName2));
+                                            $4.assembly =  $4.assembly.replace(varName2, getRegister(varName2));
                                         } else if (type.equals("FLOAT")) {
                                             String newReg = "$f" + getFloatRegister();
                                             setRegister($2.token, newReg);
@@ -104,7 +104,7 @@ stmt    :   type ID ASSIGN expr   {
                                             // setRegister(varName2, "$t"+getIntRegister());
                                             //find in hashmap, which register has the value of this variable name
                                             // replace $tY
-                                            $4.assembly = ".text\nadd.s " + newReg + ", " + getRegister(varName1)+ ", " + getRegister(varName2);
+                                            $4.assembly = "add.s " + newReg + ", " + getRegister(varName1)+ ", " + getRegister(varName2);
                                         }
                                         textSection.add($4.assembly);
                                     }
